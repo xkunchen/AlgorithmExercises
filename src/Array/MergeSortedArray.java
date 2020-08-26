@@ -15,6 +15,7 @@ import java.util.Arrays;
 // 👍 594 👎 0
 public class MergeSortedArray {
     //第一次解答，既然从前不可以，就从后面开始
+    //8月26日第一次解答
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if (m==0){
             for (int l = 0; l < nums2.length; l++) {
