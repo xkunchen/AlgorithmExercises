@@ -40,9 +40,18 @@ public class UniquePaths {
         }
         return arr[n-1][m-1];
     }
-
+    //其他答案
+    public int uniquePaths2(int m, int n) {
+        //只跟第几行第几列有关，从m+n-2步中抽出m-1步
+        long ans=1;
+        for(int i=0;i<Math.min(m-1,n-1);i++){
+            ans*=m+n-2-i;
+            ans/=i+1;
+        }
+        return (int)ans;
+    }
     public static void main(String[] args) {
         UniquePaths u=new UniquePaths();
-        System.out.println( u.uniquePaths(7,3));
+        System.out.println( u.uniquePaths2(7,3));
     }
 }
