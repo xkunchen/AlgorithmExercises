@@ -89,7 +89,7 @@ public class CoinChange {
         }
         return dp[amount] > amount ? -1 : dp[amount];
     }
-    //广度优先遍历,有时间看一下
+    //广度优先遍历,有时间看一下，妙啊，一开始是这种用树广度优先遍历，就是不知道怎么写代码
     public int coinChange4(int[] coins, int amount) {
         if (amount == 0) {
             return 0;
@@ -182,6 +182,6 @@ public class CoinChange {
     }
     public static void main(String[] args) {
         CoinChange c=new CoinChange();
-        c.coinChange6( new int[]{3,4, 5},26);
+        c.coinChange4( new int[]{3,4, 5},26);
     }
 }
