@@ -30,28 +30,91 @@ public class SearchInRotatedSortedArray {
         int left = 0, right , mid;
         if (target<nums[0]){
             left=index;
-            right=nums.length;
+            right=nums.length-1;
+        }else if(target==nums[0]){
+            return 0;
         }else {
             left=0;
-            right=index-1;
+            right= (index==0) ?nums.length-1:index-1;
         }
 
         while (left <= right) {
+            if (nums[left] ==target) return left;
+            if (nums[right]==target) return right;
             mid = (right - left) / 2 + left;
-            if(mid*mid==x){
+            if(nums[mid]==target){
                 return mid;
-            }else if((long)mid*(long)mid<x){
-                if(((long)mid+1)*((long)mid+1)>x){
-                    return mid;
-                }
+            }else if(nums[mid]<target){
                 left = mid + 1;
             }else{
-                if(((long)mid-1)*((long)mid-1)<x){
-                    return mid-1;
-                }
                 right = mid - 1;
             }
         }
         return -1;
+    }
+    public int search2(int[] nums, int target) {
+        int lo = 0, hi = nums.length - 1;
+        while (lo <= hi) {
+            int mid = lo + (hi - lo) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+
+            // 先根据 nums[0] 与 target 的关系判断目标值是在左半段还是右半段
+            if (target >= nums[0]) {
+                // 目标值在左半段时，若 mid 在右半段，则将 mid 索引的值改成 inf
+                if (nums[mid] < nums[0]) {
+                    nums[mid] = Integer.MAX_VALUE;
+                }
+            } else {
+                // 目标值在右半段时，若 mid 在左半段，则将 mid 索引的值改成 -inf
+                if (nums[mid] >= nums[0]) {
+                    nums[mid] = Integer.MIN_VALUE;
+                }
+            }
+
+            if (nums[mid] < target) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+        return -1;
+    }
+    public int search3(int[] nums, int target) {
+        int n = nums.length;
+        if (n == 0) {
+            return -1;
+        }
+        if (n == 1) {
+            return nums[0] == target ? 0 : -1;
+        }
+        int l = 0, r = n - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (nums[mid] == target) {
+                return mid;
+            }
+            if (nums[0] <= nums[mid]) {
+                if (nums[0] <= target && target < nums[mid]) {
+                    r = mid - 1;
+                } else {
+                    l = mid + 1;
+                }
+            } else {
+                if (nums[mid] < target && target <= nums[n - 1]) {
+                    l = mid + 1;
+                } else {
+                    r = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+    public static void main(String[] args) {
+        SearchInRotatedSortedArray s=new SearchInRotatedSortedArray();
+        int nums[]=new int[]{4,5,6,7,0,1,2};
+        //      int nums[]=new int[]{1};
+        s.search2(nums,6);
     }
 }
