@@ -57,9 +57,14 @@ public class Triangle {
     }
     //第二遍，自下而上的动态规划，反过来想象
     public int minimumTotal2(List<List<Integer>> triangle) {
-        int arr[] = new int[triangle.get(triangle.size() - 1).size()];
-        int MinLoad = 0;
-        return MinLoad;
+        int n = triangle.size();
+        int[] dp = new int[n + 1];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = 0; j <= i; j++) {
+                dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i).get(j);
+            }
+        }
+        return dp[0];
     }
 
     public static void main(String[] args) {
