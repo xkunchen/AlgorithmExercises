@@ -182,6 +182,6 @@ public class CoinChange {
     }
     public static void main(String[] args) {
         CoinChange c=new CoinChange();
-        c.coinChange4( new int[]{3,4, 5},26);
+        System.out.println(c.coinChange6( new int[]{3,4, 5},26));
     }
 }

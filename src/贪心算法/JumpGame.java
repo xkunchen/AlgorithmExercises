@@ -35,7 +35,7 @@ public class JumpGame {
     }
 
     public static void main(String[] args) {
-        int arr[]=new int[]{1,0,1,0};
+        int arr[]=new int[]{3,2,1,0,4};
         JumpGame J= new JumpGame();
         J.canJump(arr);
     }
