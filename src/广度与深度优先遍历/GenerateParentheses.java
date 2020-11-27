@@ -54,7 +54,7 @@ public class GenerateParentheses {
         addBracket(s+"(",left+1,right,n,allResult);
         addBracket(s+")",left,right+1,n,allResult);
     }
-    //解法2：动态规划
+    //解法2：回溯
     ArrayList[] cache = new ArrayList[100];
 
     public List<String> generate(int n) {
