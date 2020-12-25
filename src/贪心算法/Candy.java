@@ -16,6 +16,11 @@ package 贪心算法;
 // Related Topics 贪心算法
 // 👍 428 👎 0
 public class Candy {
+    /**
+     * 分发糖果
+     *          https://leetcode-cn.com/problems/candy/
+     *          贪心算法
+     */
     public int candy(int[] ratings) {
         int count=0;
         if (ratings.length==1){
