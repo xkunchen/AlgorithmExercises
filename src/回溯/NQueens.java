@@ -40,7 +40,7 @@ public class NQueens {
             backtrack(solutions, queens, n, 0, columns, diagonals1, diagonals2);
             return solutions;
         }
-
+        // 结果，，皇后数，
         public void backtrack(List<List<String>> solutions, int[] queens, int n, int row, Set<Integer> columns, Set<Integer> diagonals1, Set<Integer> diagonals2) {
             if (row == n) {
                 List<String> board = generateBoard(queens, n);
