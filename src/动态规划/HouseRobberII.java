@@ -25,7 +25,7 @@ public class HouseRobberII {
     //分为两种情况有，第一个选择，和第一个不选择
     public int rob(int[] nums) {
         if (nums == null || nums.length == 0) {
-            return 0;
+            return  0;
         }
         int length = nums.length;
         if (length == 1) {
