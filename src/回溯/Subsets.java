@@ -12,9 +12,7 @@ package 回溯;
 // Related Topics 位运算 数组 回溯算法
 // 👍 948 👎 0
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 子集
@@ -29,10 +27,11 @@ public class Subsets {
         return result;
     }
 
-    private void dealSubset(int[] nums, List<List<Integer>> result, ArrayList<Integer> list,int index) {
+    private void dealSubset(int[] nums, List<List<Integer>> result, List<Integer> list,int index) {
         result.add(list);
         for (int i = index; i < nums.length; i++) {
-            ArrayList<Integer> newList = (ArrayList<Integer>)list.clone();
+            List<Integer> newList =new ArrayList<>();
+            newList.addAll(list);
             newList.add(nums[i]);
             dealSubset(nums,result,newList,i+1);
         }
@@ -40,7 +39,7 @@ public class Subsets {
 
     public static void main(String[] args) {
         Subsets s=new Subsets();
-        int nums[]={1,2,3};
+        int nums[]={6,5,5};
         s.subsets(nums);
     }
 }
