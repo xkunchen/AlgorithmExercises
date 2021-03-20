@@ -33,7 +33,27 @@ public class ContainerWithMostWater {
         }
         return maxArea;
     }
-
+    //第二遍
+    public int maxArea2(int[] height) {
+        int maxArea=0;
+        //定义左指针
+        int left=0;
+        //定义右指针
+        int right=height.length-1;
+        while (left<right){
+            //如果左指针对应数组的值，小于右边的值，那么就往
+            if(height[left]<height[right]){
+                left++;
+            }else{
+                right--;
+            }
+            int curentMaxArea=Math.min(height[right],height[left])*(right-left);
+            if (curentMaxArea>maxArea){
+                maxArea=curentMaxArea;
+            }
+        }
+       return maxArea;
+    }
     public static void main(String[] args) {
         ContainerWithMostWater c=new ContainerWithMostWater();
         int height[]={1,8,6,2,5,4,8,3,7};

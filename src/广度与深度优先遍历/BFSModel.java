@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-class TreeNode {
+ class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
