@@ -15,6 +15,36 @@ import java.util.List;
 // Related Topics 数组 双指针
 // 👍 2518 👎 0
 public class ThreeSum {
+    //第二遍
+    public List<List<Integer>>  threeSum3(int[] nums) {
+        List<List<Integer>> returnData = new ArrayList<>();
+        if(nums == null || nums.length < 3) return returnData;
+        //首先进行排序
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length; i++) {
+            if(nums[i] > 0) break; // 如果当前数字大于0，则三数之和一定大于0，所以结束循环
+            if(i > 0 && nums[i] == nums[i-1]) continue; // 去重
+            //定义左边
+            int left =i+1;
+            //定义右边
+            int right=nums.length-1;
+            while (left<right){
+                int sums=nums[i]+nums[left]+nums[right];
+                if (right>left&&sums>0) right--;
+                if (right>left&&sums<0) left++;
+                if (right>left&&sums==0){
+                    returnData.add(Arrays.asList(nums[i],nums[left],nums[right]));
+                    while (left<right && nums[left] == nums[left+1]) left++; // 去重
+                    while (left<right && nums[right] == nums[right-1]) right--; // 去重
+                    left++;
+                    right--;
+                }
+            }
+        }
+
+        return  returnData;
+
+    }
     //排序加双指针
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> returnList=new ArrayList<List<Integer>>();

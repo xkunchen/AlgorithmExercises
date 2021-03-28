@@ -12,6 +12,11 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class TwoSum {
+    public int largestRectangleArea2(int[] heights){
+        int result=0;
+        return result;
+    }
+    //应该是最大区域
     public int largestRectangleArea(int[] heights) {
         int len = heights.length;
         if (len == 0) {
