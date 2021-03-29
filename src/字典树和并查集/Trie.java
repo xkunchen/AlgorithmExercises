@@ -92,4 +92,17 @@ public class Trie {
         TrieNode node = searchPrefix(word);
         return node != null && node.isEnd();
     }
+
+    public static void main(String[] args) {
+        Trie t=new Trie();
+        t.insert("word");
+        t.insert("words");
+        t.insert("ward");
+        t.insert("wkrd");
+        t.insert("wtrd");
+        t.insert("wsrd");
+        t.insert("werd");
+        boolean werd = t.search("werd");
+        boolean werds = t.search("werdsdf");
+    }
 }
