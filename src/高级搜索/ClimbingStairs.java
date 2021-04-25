@@ -20,9 +20,12 @@ package 高级搜索;
 // 👍 1546 👎 0
 /**
  * 1   爬楼梯
- *               https://leetcode-cn.com/problems/climbing-stairs/
- *               再次做一遍，高级算法前提，递归进行剪枝
+ * https://leetcode-cn.com/problems/climbing-stairs/
+ * 再次做一遍，高级算法前提，递归进行剪枝
  */
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 总结，方向不对，要清楚，有个不好的习惯，做题不想，直接开始，所以一开始方向不对就直接over
@@ -37,38 +40,41 @@ public class ClimbingStairs {
     public int climbStairs(int n) {
         //进行递归返回结果
         //结束条件
-        if (n==1){
+        if (n == 1) {
             return 1;
-        }else if (n==2){
+        } else if (n == 2) {
             return 2;
         }
         //处理逻辑
-        return  climbStairs(n-1)+climbStairs(n-2);
+        return climbStairs(n - 1) + climbStairs(n - 2);
     }
+
     /*
     第二个版本：改善递归，把结果存储起来，减少递归次数.有点动态规划的味道
      */
     public int climbStairs2(int n) {
-        int[] arr=new int[n+1];
-        return climb(n,arr);
+        int[] arr = new int[n + 1];
+        return climb(n, arr);
     }
-    private static  int count=0;//看遍历多少次
+
+    private static int count = 0;//看遍历多少次
+
     private int climb(int n, int[] arr) {
         //进行递归返回结果
         //结束条件
-        if (n==1){
+        if (n == 1) {
             return 1;
-        }else if (n==2){
+        } else if (n == 2) {
             return 2;
         }
-        if (arr[n]!=0){
+        if (arr[n] != 0) {
             return arr[n];
         }
         count++;
         //保存结果
-        arr[n]=climb(n-1,arr)+climb(n-2,arr);
+        arr[n] = climb(n - 1, arr) + climb(n - 2, arr);
         //处理逻辑
-        return  arr[n];
+        return arr[n];
     }
 
 }
