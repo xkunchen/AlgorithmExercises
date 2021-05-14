@@ -12,7 +12,7 @@ import java.util.Arrays;
  * 计数排序
  */
 public class CountingSort {
-    public int[] sort(int[] sourceArray) throws Exception {
+    public int[] sort(int[] sourceArray)  {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
         int maxValue = getMaxValue(arr);
@@ -41,5 +41,10 @@ public class CountingSort {
             }
         }
         return maxValue;
+    }
+    public static void main(String[] args) {
+        CountingSort q=new CountingSort();
+        int[] arr=new int[]{10,9,8,6,2,4,5,8,11,3,5};
+        q.sort(arr);
     }
 }

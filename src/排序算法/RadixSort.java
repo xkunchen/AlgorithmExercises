@@ -17,7 +17,7 @@ import java.util.Arrays;
  * 考虑负数的情况还可以参考： https://code.i-harness.com/zh-CN/q/e98fa9
  */
 public class RadixSort {
-    public int[] sort(int[] sourceArray) throws Exception {
+    public int[] sort(int[] sourceArray) {
         // 对 arr 进行拷贝，不改变参数内容
         int[] arr = Arrays.copyOf(sourceArray, sourceArray.length);
         int maxDigit = getMaxDigit(arr);
@@ -78,5 +78,11 @@ public class RadixSort {
         arr = Arrays.copyOf(arr, arr.length + 1);
         arr[arr.length - 1] = value;
         return arr;
+    }
+
+    public static void main(String[] args) {
+        RadixSort r=new RadixSort();
+        int[] arr=new int[]{10,9,8,6,2,4,5,8,11,3,5};
+        r.sort(arr);
     }
 }

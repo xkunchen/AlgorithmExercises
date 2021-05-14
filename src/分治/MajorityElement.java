@@ -35,6 +35,7 @@ public class MajorityElement {
     }
     //投票法
     public int majorityElement2(int[] nums) {
+        //注意条件大于n/2，所以可以用这个
         int count = 0;
         Integer candidate = null;
 
@@ -50,7 +51,7 @@ public class MajorityElement {
 
     public static void main(String[] args) {
         MajorityElement m=new MajorityElement();
-        int nums[]={6,5,5,7,2,1,5,7,4,2};
+        int nums[]={6,5,5,5,2,5,5,7,5,2};
         m.majorityElement2(nums);
     }
 }

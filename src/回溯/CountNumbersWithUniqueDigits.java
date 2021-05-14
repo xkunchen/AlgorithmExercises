@@ -65,6 +65,9 @@ public class CountNumbersWithUniqueDigits {
         return ans;
     }
     //回溯
+    /**
+     * 唯一的解释是先排最小的个位，再排第一位，最后排中位，
+     */
     public int countNumbersWithUniqueDigits3(int n) {
         if (n == 0) return 1;
         return dfs(Math.min(10, n), 0, new boolean[10]);
@@ -89,8 +92,20 @@ public class CountNumbersWithUniqueDigits {
         }
         return count;
     }
+    //动态规划
+    public int countNumbersWithUniqueDigits4(int n) {
+        int result[]=new int[n+1];
+        for(int i = 2; i <= n; ++i){
+            result[i] =  (result[i-1]*10 + (int)(9*Math.pow(10, i-2) - result[i-1])*(i-1));
+        }
+        int sum = 0;
+        for(int one: result){
+            sum += one;
+        }
+        return (int) Math.pow(10, n)-sum;
+    }
     public static void main(String[] args) {
         CountNumbersWithUniqueDigits c=new CountNumbersWithUniqueDigits();
-        System.out.println(c.countNumbersWithUniqueDigits3(3));
+        System.out.println(c.countNumbersWithUniqueDigits2(3));
     }
 }
