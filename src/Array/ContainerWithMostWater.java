@@ -13,6 +13,10 @@ package Array;
         我们每次将 对应的数字较小的那个指针 往 另一个指针 的方向移动一个位置，就表
         示我们认为 这个指针不可能再作为容器的边界了。*/
 
+/**
+ * https://leetcode-cn.com/problems/Container-With-Most-Water/
+ * 盛最多水的容器
+ */
 public class ContainerWithMostWater {
     public int maxArea(int[] height) {
         int left=0;//左边开始
@@ -54,9 +58,21 @@ public class ContainerWithMostWater {
         }
        return maxArea;
     }
+    //第三遍
+    public int maxArea3(int[] height) {
+        int left =0;
+        int right=height.length-1;
+        int maxArea=Math.min(height[right],height[left])*(right-left);
+        while (right>left){
+            if (height[left]<height[right]) left++;
+            else right--;
+            maxArea=Math.max(maxArea,Math.min(height[left],height[right])*(right-left));
+        }
+        return maxArea;
+    }
     public static void main(String[] args) {
         ContainerWithMostWater c=new ContainerWithMostWater();
-        int height[]={1,8,6,2,5,4,8,3,7};
-        System.out.println(c.maxArea(height));
+        int height[]={1,1};
+        System.out.println(c.maxArea3(height));
     }
 }
