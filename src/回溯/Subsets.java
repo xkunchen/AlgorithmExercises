@@ -39,7 +39,7 @@ public class Subsets {
 
     public static void main(String[] args) {
         Subsets s=new Subsets();
-        int nums[]={6,5,5};
+        int nums[]={6,5,4};
         s.subsets(nums);
     }
 }

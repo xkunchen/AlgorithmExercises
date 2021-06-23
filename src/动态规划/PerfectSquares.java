@@ -5,6 +5,12 @@ package 动态规划;
  * @Description:
  * @Data: 2021/6/11
  **/
+
+/**
+ * https://leetcode-cn.com/problems/perfect-squares/
+ *            完全平方数
+ *           动态规划
+ */
 public class PerfectSquares {
     public int numSquares(int n) {
         if (n==0) return 0;

@@ -54,4 +54,9 @@ public class LetterCombinationsOfAPhoneNumber {
             }
         }
     }
+
+    public static void main(String[] args) {
+        LetterCombinationsOfAPhoneNumber l=new LetterCombinationsOfAPhoneNumber();
+        l.letterCombinations("23");
+    }
 }

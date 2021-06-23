@@ -46,7 +46,7 @@ public class CoinChange2 {
         dp[0] = 1;
         for (int coin : coins) {
             for (int i = coin; i <= amount; i++) {
-                dp[i] += dp[i - coin];
+                dp[i] += dp[i - coin];//包含本身，可以无限，所以动态方程存储的还是本维数组
             }
         }
         return dp[amount];

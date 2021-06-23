@@ -119,6 +119,6 @@ public class NQueens {
 
     public static void main(String[] args) {
         NQueens n = new NQueens();
-        n.solveNQueens2(4);
+        n.solveNQueens(4);
     }
 }

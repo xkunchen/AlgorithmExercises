@@ -106,6 +106,6 @@ public class CountNumbersWithUniqueDigits {
     }
     public static void main(String[] args) {
         CountNumbersWithUniqueDigits c=new CountNumbersWithUniqueDigits();
-        System.out.println(c.countNumbersWithUniqueDigits2(3));
+        System.out.println(c.countNumbersWithUniqueDigits4(3));
     }
 }

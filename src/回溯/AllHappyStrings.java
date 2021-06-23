@@ -43,6 +43,31 @@ import java.util.Map;
  */
 public class AllHappyStrings {
     String[] arr={"a","b","c"};
+
+    public String getHappyString2(int n, int k) {
+        if (n==0){
+            return "";
+        }
+        //1.所有字符串都在a,b,c内
+        //2.满足s[i] != s[i + 1]
+        List<String> resultList=new ArrayList<>();
+        deal(n,resultList,0,-1,"");
+        if (resultList.size()<k) return "";
+        else return resultList.get(k-1);
+    }
+
+    private void deal(int n, List<String> resultList, int currentIndex,int preIndex, String CurrentStr) {
+        if (currentIndex==n){
+            resultList.add(CurrentStr);
+            return;
+        }
+        for (int i = 0; i < 3; i++) {
+            if (i!=preIndex){
+                deal(n,resultList,currentIndex+1,i,CurrentStr+arr[i]);
+            }
+        }
+    }
+
     public String getHappyString(int n, int k) {
         if (n==0){
             return "";
@@ -76,6 +101,6 @@ public class AllHappyStrings {
 
     public static void main(String[] args) {
         AllHappyStrings s =new AllHappyStrings();
-        s.getHappyString(1,4);
+        s.getHappyString2(3,9);
     }
 }
