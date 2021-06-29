@@ -85,7 +85,7 @@ public class CombinationSum {
     }
     public static void main(String[] args) {
         CombinationSum c=new CombinationSum();
-        int[] arr=new int[]{2,3,6,7};
-        c.combinationSum3(arr,7);
+        int[] arr=new int[]{10,1,2,7,6,1,5};
+        c.combinationSum3(arr,8);
     }
 }
