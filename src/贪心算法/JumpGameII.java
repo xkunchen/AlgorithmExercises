@@ -78,6 +78,6 @@ public class JumpGameII {
         JumpGameII j=new JumpGameII();
         //int arr[]=new int[]{2,1,1,1,1};
          int arr[]=new int[]{2,4,1,1,4,1};
-        j.jump3(arr);
+        j.jump2(arr);
     }
 }
