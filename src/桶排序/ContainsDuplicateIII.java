@@ -1,10 +1,13 @@
-package 滑动窗口;
+package 桶排序;
 
 /**
- * @Author: xkunchen
- * @Description:
- * @Data: 2021/7/17
- **/
+ * ClassName: xkunchen <br/>
+ * Description: <br/>
+ * date: 2021/11/2 15:06<br/>
+ *
+ * @author xkunchen<br />
+ */
+
 /**
  * 给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) <= t ，同时又满足 abs(i - j) <= k 。
  * 如果存在则返回 true，不存在返回 false。
@@ -12,49 +15,14 @@ package 滑动窗口;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeSet;
 
 /**
- * 存在重复元素 III
  * https://leetcode-cn.com/problems/contains-duplicate-iii/
- * 有负数要考虑integer越界问题
- * set的应用
+ * 存在重复元素 III
  */
 public class ContainsDuplicateIII {
-    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
-        if (nums.length<2) return  false;
-        int left=0;
-        for (int i = 1; i < nums.length; i++) {
-            if (i-left>k){
-                left++;
-            }
-            for (int j = left; j <i ; j++) {
-                if (Math.abs((long)nums[i]-(long)nums[j])<= t){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-    public boolean containsNearbyAlmostDuplicate2(int[] nums, int k, int t) {
-        int n = nums.length;
-        TreeSet<Long> set = new TreeSet<Long>();
-        for (int i = 0; i < n; i++) {
-            Long ceiling = set.ceiling((long) nums[i] - (long) t);
-            if (ceiling != null && ceiling <= (long) nums[i] + (long) t) {
-                return true;
-            }
-            set.add((long) nums[i]);
-            if (i >= k) {
-                set.remove((long) nums[i - k]);
-            }
-        }
-        return false;
-    }
     //桶排序
     /**
-     * 给你一个整数数组 nums 和两个整数 k 和 t 。请你判断是否存在 两个不同下标 i 和 j，使得 abs(nums[i] - nums[j]) <= t ，同时又满足 abs(i - j) <= k 。
-     *
      * 思路及算法
      * 我们也可以使用利用桶排序的思想解决本题。我们按照元素的大小进行分桶，维护一个滑动窗口内的元素对应的元素。
      * 对于元素 x，其影响的区间为 [x−t,x+t]。于是我们可以设定桶的大小为 t+1。如果两个元素同属一个桶，那么这两个元素必然符合条件。
@@ -63,7 +31,7 @@ public class ContainsDuplicateIII {
      * 否则我们继续检查两个相邻的桶内是否存在符合条件的元素。
      * 实现方面，我们将 int 范围内的每一个整数 x 表示为 x=(t+1)×a+b(0≤b≤t)  的形式，这样 x 即归属于编号为 a 的桶。因为一个桶内至多只会有一个元素，所以我们使用哈希表实现即可。
      */
-    public boolean containsNearbyAlmostDuplicate3(int[] nums, int k, int t) {
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
         int n = nums.length;
         Map<Long, Long> map = new HashMap<Long, Long>();
         long w = (long) t + 1;//桶大小
@@ -85,16 +53,10 @@ public class ContainsDuplicateIII {
         }
         return false;
     }
-
     public long getID(long x, long w) {
         if (x >= 0) {
             return x / w;
         }
         return (x + 1) / w - 1;
-    }
-    public static void main(String[] args) {
-        ContainsDuplicateIII c=new ContainsDuplicateIII();
-        int arr[]=new int[]{1,5,7,3,9,4};
-        c.containsNearbyAlmostDuplicate3(arr,2,1);
     }
 }

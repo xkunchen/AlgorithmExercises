@@ -108,7 +108,7 @@ public class ThreeSum {
         return ans;
     }
     public static void main(String[] args) {
-        int[] arr={0,0,0,0};
+        int[] arr={-1, 0, 1, 2, -1, -4};
         ThreeSum t=new ThreeSum();
         t.threeSum(arr);
     }
