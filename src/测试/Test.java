@@ -1,6 +1,8 @@
 package 测试;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: xkunchen
@@ -66,9 +68,9 @@ public class Test {
         return 2*i+1;
     }
     public static void main(String[] args) {
-        Test t=new Test();
-        t.testMethod();
-
-
+       Map<Integer,String> aa=new HashMap<>();
+       aa.put(new Integer(1),"adaf");
+       aa.put(new Integer(1393955),"adaf");
+       System.out.println(aa.get(new Integer(1393955)));
     }
 }
