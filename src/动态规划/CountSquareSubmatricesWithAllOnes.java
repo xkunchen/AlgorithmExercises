@@ -37,6 +37,6 @@ public class CountSquareSubmatricesWithAllOnes {
                 {1,1,1,1 },
                 {0,1,1,1 }
             };
-        c.countSquares(arr);
+        System.out.println(c.countSquares(arr));
     }
 }

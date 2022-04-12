@@ -74,6 +74,6 @@ public class LongestIncreasingSubsequence {
     }
     public static void main(String[] args) {
         LongestIncreasingSubsequence l=new LongestIncreasingSubsequence();
-        l.lengthOfLIS3(new int[]{1,8,4,12,2});
+        l.lengthOfLIS3(new int[]{3,15,2,16,3,4,5,6,7,17,101,18});
     }
 }

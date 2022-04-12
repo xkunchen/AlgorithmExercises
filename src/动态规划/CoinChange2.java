@@ -54,6 +54,6 @@ public class CoinChange2 {
 
     public static void main(String[] args) {
         CoinChange2 c=new CoinChange2();
-        c.mychange(5,new int[]{1, 2, 5});
+        c.mychange(3,new int[]{1, 2});
     }
 }

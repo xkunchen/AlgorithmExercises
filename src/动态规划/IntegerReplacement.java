@@ -61,6 +61,6 @@ public class IntegerReplacement {
 
     public static void main(String[] args) {
         IntegerReplacement i=new IntegerReplacement();
-        System.out.println(i.integerReplacement(100000000));
+        System.out.println(i.integerReplacement2(100000000));
     }
 }

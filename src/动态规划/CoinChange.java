@@ -159,6 +159,7 @@ public class CoinChange {
         }
     }
     //贪心算法
+    //重点是 i+count<res 优化了一些不必要的循环
     int res = Integer.MAX_VALUE;
     public int coinChange6(int[] coins, int amount){
         if(amount==0){
@@ -182,6 +183,6 @@ public class CoinChange {
     }
     public static void main(String[] args) {
         CoinChange c=new CoinChange();
-        System.out.println(c.coinChange6( new int[]{3,4, 5},26));
+        System.out.println(c.coinChange5( new int[]{1,4, 5},28));
     }
 }

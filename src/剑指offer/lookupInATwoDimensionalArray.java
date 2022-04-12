@@ -12,7 +12,7 @@ package 剑指offer;
  */
 
 /**
- * 总结：因为多个比较，所以先定死一个值，在一行中最大或最小
+ * 总结：因为多个比较，所以先定死一个值，在行中最大，在列中最小
  */
 public class lookupInATwoDimensionalArray {
     public boolean findNumberIn2DArray(int[][] matrix, int target) {

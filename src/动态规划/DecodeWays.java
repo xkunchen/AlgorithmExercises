@@ -83,7 +83,7 @@ public class DecodeWays {
         f[0] = 1;
         for (int i = 1; i <= n; ++i) {
             if (s.charAt(i - 1) != '0') {
-                f[i] += f[i - 1];
+                f[i] = f[i - 1];
             }
             if (i > 1 && s.charAt(i - 2) != '0' && ((s.charAt(i - 2) - '0') * 10 + (s.charAt(i - 1) - '0') <= 26)) {
                 f[i] += f[i - 2];
@@ -111,7 +111,7 @@ public class DecodeWays {
 
     public static void main(String[] args) {
         DecodeWays d=new DecodeWays();
-        d.numDecodings("12");
+        d.numDecodings2("1214");
     }
 }
 

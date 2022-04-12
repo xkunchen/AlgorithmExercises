@@ -174,6 +174,6 @@ public class LongestPalindromicSubstring {
     }
     public static void main(String[] args) {
         LongestPalindromicSubstring l=new LongestPalindromicSubstring();
-        l.longestPalindrome4("abcddcbaacca");
+        l.longestPalindrome3("abcddcbaacca");
     }
 }

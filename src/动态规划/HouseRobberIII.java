@@ -28,9 +28,25 @@ import java.util.Map;
 // 👍 587 👎 0
 class TreeNode {
     int val;
+
     TreeNode left;
     TreeNode right;
     TreeNode(int x) { val = x; }
+    public TreeNode getLeft() {
+        return left;
+    }
+
+    public void setLeft(TreeNode left) {
+        this.left = left;
+    }
+
+    public TreeNode getRight() {
+        return right;
+    }
+
+    public void setRight(TreeNode right) {
+        this.right = right;
+    }
 }
 public class HouseRobberIII {
     //第一遍看答案，官方题解,自上而下
@@ -51,6 +67,23 @@ public class HouseRobberIII {
         f.put(node, node.val + g.getOrDefault(node.left, 0) + g.getOrDefault(node.right, 0));
         g.put(node, Math.max(f.getOrDefault(node.left, 0), g.getOrDefault(node.left, 0)) + Math.max(f.getOrDefault(node.right, 0), g.getOrDefault(node.right, 0)));
     }
+
+    public int rob4(TreeNode root) {
+        int[] rootStatus = dfs2(root);
+        return Math.max(rootStatus[0], rootStatus[1]);
+    }
+
+    public int[] dfs2(TreeNode node) {
+        if (node == null) {
+            return new int[]{0, 0};
+        }
+        int[] l = dfs2(node.left);
+        int[] r = dfs2(node.right);
+        int selected = node.val + l[1] + r[1];
+        int notSelected = Math.max(l[0], l[1]) + Math.max(r[0], r[1]);
+        return new int[]{selected, notSelected};
+    }
+
     //第二种解法,自上而下
     Map<TreeNode, Integer> memo = new HashMap<>();
     public int rob2(TreeNode root) {
@@ -94,7 +127,26 @@ public class HouseRobberIII {
         return new int[]{not_rob, rob};
     }
 
-    public static void main(String[] args) {
+    //一维数组构建二叉树
+    public static  TreeNode buildTree(Integer[] arr, int i) // 初始时,传入的i==1
+    {
+        //TreeNode root = null; // 定义根节点
+        if (i > arr.length) {// i >= arr.length 时,表示已经到达了根节点
+            return null;
+        }
+        if(arr[i-1] == null){
+            return null;
+        }
+        TreeNode root = new TreeNode(arr[i-1]); // 根节点
+        root.left = buildTree(arr, 2*i); // 递归建立左孩子结点
+        root.right = buildTree(arr, 2*i+1); // 递归建立右孩子结点
+        return root;
+    }
 
+    public static void main(String[] args) {
+        HouseRobberIII houseRobberIII=new HouseRobberIII();
+        Integer arr[]={3,4,5,1,3,null,1};
+        TreeNode treeNode = buildTree(arr, 1);
+        houseRobberIII.rob3(treeNode);
     }
 }

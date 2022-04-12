@@ -62,6 +62,6 @@ public class JumpGameVI {
     public static void main(String[] args) {
         JumpGameVI j=new JumpGameVI();
         int nums[]={10,-5,-2,4,0,3};
-        j.maxResult(nums,3);
+        j.maxResult2(nums,2);
     }
 }

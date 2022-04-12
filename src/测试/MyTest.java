@@ -50,10 +50,20 @@ public class MyTest {
         }
         return null;
     }
+    public static Long getSecondsNextEarlyMorning() {
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR, 1);
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return (cal.getTimeInMillis() - System.currentTimeMillis()) / 1000 / 60/60;
+    }
     public static void main(String[] args) {
-
+        Calendar cal = Calendar.getInstance();
         // 本周星期天的日期
-        System.out.println(getTheDateByWeekName("周六"));
+        /*System.out.println(getTheDateByWeekName("周六"));*/
+        System.out.println(cal.get(Calendar.YEAR));
     }
 
 }
