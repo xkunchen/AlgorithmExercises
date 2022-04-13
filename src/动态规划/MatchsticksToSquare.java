@@ -80,6 +80,11 @@ public class MatchsticksToSquare {
         Collections.sort(this.nums, Collections.reverseOrder());
         return this.dfs(0);
     }
+
+    public static void main(String[] args) {
+        Solution matchsticksToSquare=new Solution();
+        matchsticksToSquare.makesquare(new int[]{1,1,2,2,2,4,2,3,3});
+    }
 }
 class Solution {
     public HashMap<Pair<Integer, Integer>, Boolean> memo;

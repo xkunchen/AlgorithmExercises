@@ -84,7 +84,7 @@ public class PerfectSquares {
     }
     public static void main(String[] args) {
         PerfectSquares p=new PerfectSquares();
-        p.numSquares2(12);
+        System.out.println(p.numSquares2(99));
     }
 }
 
