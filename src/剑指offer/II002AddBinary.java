@@ -26,8 +26,9 @@ package 剑指offer;
 /**
  * https://leetcode-cn.com/problems/add-binary/
  * 二进制求和
+ * [剑指 Offer II 002]二进制加法
  */
-public class AddBinary {
+public class II002AddBinary {
     public String addBinary(String a, String b) {
         char[] aCharArray = a.toCharArray();
         char[] bCharArray = b.toCharArray();
@@ -74,7 +75,7 @@ public class AddBinary {
     }
 
     public static void main(String[] args) {
-        AddBinary addBinary=new AddBinary();
+        II002AddBinary addBinary=new II002AddBinary();
         System.out.println(addBinary.addBinary3("1111","1111"));
 
     }

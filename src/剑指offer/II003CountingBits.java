@@ -8,7 +8,12 @@ package 剑指offer;
  *
  * @author xkunchen<br />
  */
-public class CountingBits {
+
+/**
+ * https://leetcode-cn.com/problems/counting-bits/
+ *    [剑指 Offer II 003]前 n 个数字二进制中 1 的个数
+ */
+public class II003CountingBits {
     public int[] countBits(int n) {
         int[] bits = new int[n + 1];
         for (int i = 0; i <= n; i++) {
@@ -47,7 +52,7 @@ public class CountingBits {
         }
         return bits;
     }
-
+    //i & (i - 1) (i & (i - 1)) == 0 ? 0:
     //最低设置位
     public int[] countBits4(int n) {
         int[] bits = new int[n + 1];
@@ -59,8 +64,8 @@ public class CountingBits {
 
 
     public static void main(String[] args) {
-        CountingBits bit=new CountingBits();
-        bit.countBits3(7);
+        II003CountingBits bit=new II003CountingBits();
+        bit.countBits4(7);
     }
 
 }

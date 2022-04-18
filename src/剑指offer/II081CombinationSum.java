@@ -2,6 +2,7 @@ package 剑指offer;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 import sun.security.util.ArrayUtil;
+import 回溯.CombinationSum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,7 +15,13 @@ import java.util.List;
  *
  * @author xkunchen<br />
  */
-public class CombinationSum {
+
+/**
+ * https://leetcode-cn.com/problems/combination-sum/
+ * ✔[剑指 Offer II 081]允许重复选择元素的组合
+ * Related Topics 数组 回溯 👍 17 👎 0
+ */
+public class II081CombinationSum {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         Arrays.sort(candidates);
         List<List<Integer>> returnList = new ArrayList<>();
@@ -40,7 +47,7 @@ public class CombinationSum {
     }
 
     public static void main(String[] args) {
-        CombinationSum c=new CombinationSum();
+        II081CombinationSum c=new II081CombinationSum();
         int[] arr=new int[]{2,3,6,7};
         c.combinationSum(arr,7);
     }

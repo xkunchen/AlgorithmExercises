@@ -30,7 +30,7 @@ public class MaximumProductSubarray {
         return maxValue;
     }
 
-    //优化空间的动态规划，与我的动态规划对比
+    //优化空间的动态规划，与我的动态规划对比,优化空间将维注意需要的子结果可不可以复用
     public int maxProduct2(int[] nums) {
         int maxF = nums[0], minF = nums[0], ans = nums[0];
         int length = nums.length;
@@ -42,9 +42,26 @@ public class MaximumProductSubarray {
         }
         return ans;
     }
+    public int maxProduct3(int[] nums) {
+        int length = nums.length;
+        int[] maxF = new int[length];
+        int[] minF = new int[length];
+        System.arraycopy(nums, 0, maxF, 0, length);
+        System.arraycopy(nums, 0, minF, 0, length);
+        for (int i = 1; i < length; ++i) {
+            maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
+            minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
+        }
+        int ans = maxF[0];
+        for (int i = 1; i < length; ++i) {
+            ans = Math.max(ans, maxF[i]);
+        }
+        return ans;
+    }
+
     public static void main(String[] args) {
         MaximumProductSubarray m=new MaximumProductSubarray();
-        int arr[]=new int[]{2,3,-2,4};
-        m.maxProduct2(arr);
+        int arr[]=new int[]{-5,-2,30,-3,4,-3};
+        m.maxProduct3(arr);
     }
 }
