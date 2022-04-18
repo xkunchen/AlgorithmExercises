@@ -37,86 +37,81 @@ package 剑指offer;
  * [剑指 Offer II 001]整数除法
  */
 public class II001DivideTwoIntegers {
+    /**
+     * 两数相除
+     *
+     * @param dividend 被除数
+     * @param divisor 除数
+     * @return 商（不包含小数）
+     */
     public int divide(int dividend, int divisor) {
-        // 考虑被除数为最小值的情况
-        if (dividend == Integer.MIN_VALUE) {
-            if (divisor == 1) {
-                return Integer.MIN_VALUE;
-            }
-            if (divisor == -1) {
-                return Integer.MAX_VALUE;
-            }
-        }
-        // 考虑除数为最小值的情况
-        if (divisor == Integer.MIN_VALUE) {
-            return dividend == Integer.MIN_VALUE ? 1 : 0;
-        }
-        // 考虑被除数为 0 的情况
-        if (dividend == 0) {
-            return 0;
-        }
+        long result = 0;
+        long x = dividend;
+        long y = divisor;
+        boolean negative = (x < 0 && y > 0) || (x > 0 && y < 0);
 
-        // 一般情况，使用二分查找
-        // 将所有的正数取相反数，这样就只需要考虑一种情况
-        boolean rev = false;
-        if (dividend > 0) {
-            dividend = -dividend;
-            rev = !rev;
+        if (x < 0) {
+            x = -x;
         }
-        if (divisor > 0) {
-            divisor = -divisor;
-            rev = !rev;
+        if (y < 0) {
+            y = -y;
         }
-
-        int left = 1, right = Integer.MAX_VALUE, ans = 0;
-        while (left <= right) {
-            // 注意溢出，并且不能使用除法
-            int mid = left + ((right - left) >> 1);
-            boolean check = quickAdd(divisor, mid, dividend);
-            if (check) {
-                ans = mid;
-                // 注意溢出
-                if (mid == Integer.MAX_VALUE) {
-                    break;
-                }
-                left = mid + 1;
+        // 由于x/y的结果肯定在[0,x]范围内，所以对x使用二分法
+        long left = 0;
+        long right = x;
+        while (left < right) {
+            long mid = left + right + 1 >> 1;
+            if (quickMulti(mid, y) <= x) {
+                // 相乘结果不大于x，左指针右移
+                left = mid;
             } else {
                 right = mid - 1;
             }
         }
+        result = negative ? -left : left;
 
-        return rev ? -ans : ans;
+        // 判断是否溢出
+        if (result < Integer.MIN_VALUE || result > Integer.MAX_VALUE) {
+            return Integer.MAX_VALUE;
+        }
+
+        return (int)result;
     }
 
-    // 快速乘
-    public boolean quickAdd(int y, int z, int x) {
-        // x 和 y 是负数，z 是正数
-        // 需要判断 z * y >= x 是否成立
-        int result = 0, add = y;
-        while (z != 0) {
-            if ((z & 1) != 0) {
-                // 需要保证 result + add >= x
-                if (result < x - add) {
-                    return false;
-                }
-                result += add;
+    /**
+     * 快速乘法
+     * 8+16+32=56
+     * 2+4+8
+     * @param a 乘数
+     * @param b 被乘数
+     * @return 积
+     */
+    /**
+     * 可以看出此算法
+     * (8*7)(8+8*2+8*4)(8+16+32=56)
+     * (8*5)(8+8*4)
+     *
+     */
+    public static long quickMulti(long a, long b) {
+        long result = 0;
+
+        while (b > 0) {
+            if ((b & 1) == 1) {
+                // 当前最低位为1，结果里加上a
+                result += a;
             }
-            if (z != 1) {
-                // 需要保证 add + add >= x
-                if (add < x - add) {
-                    return false;
-                }
-                add += add;
-            }
-            // 不能使用除法
-            z >>= 1;
+            // 被乘数右移1位，相当于除以2
+            b >>= 1;
+            // 乘数倍增，相当于乘以2
+            a += a;
         }
-        return true;
+
+        return result;
     }
 
     public static void main(String[] args) {
         II001DivideTwoIntegers divideTwoIntegers=new II001DivideTwoIntegers();
-        System.out.println(divideTwoIntegers.divide(15,2));
+        System.out.println(divideTwoIntegers.divide(15,5));
     }
 
 }
