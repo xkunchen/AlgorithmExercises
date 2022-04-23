@@ -96,41 +96,36 @@ public class PalindromePartitioning {
         }
     }
 
+    List<List<String>> res = new ArrayList<>();
     public List<List<String>> partition(String s) {
-        List<List<String>> result=new ArrayList<>();
-        ArrayList<String> current=new ArrayList<>();
-        deal(result,s,current,s.charAt(0)+"",0);
-        return  result;
+        boolean[][] dp = new boolean[s.length()][s.length()];
+        for (int i = s.length() - 1; i >= 0; i--) {
+            for (int j = 0; j < s.length(); j++) {
+                if ( i >= j || (s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1])){
+                    dp[i][j] = true;
+                }
+            }
+        }
+        dfs(s,dp,0,new ArrayList<>());
+        return res;
     }
-    public void deal(List<List<String>> result, String s, ArrayList<String> current, String currentString, int index){
-        if (index>s.length()-1){
+
+    public void dfs(String s, boolean[][] dp, int cur, ArrayList<String> list){
+        if (cur == s.length()){
+            ArrayList<String> tmp = new ArrayList<>(list);
+            res.add(tmp);
             return;
         }
-        if (index==s.length()-1){
-            if(judge(currentString)){
-                current.add(currentString);
-                ArrayList<String> clone = (ArrayList<String>)current.clone();
-                result.add(clone);
-                current.remove(currentString);
-            }
-        }else{
-            String nextString=currentString;
-            for (int i = index; i < s.length(); i++) {
-                //如果是回文串，那么就
-                if(judge(nextString)){
-                    current.add(nextString);
-                    if (i<s.length()-1){
-                        deal(result,s,current,""+s.charAt(i+1),i+1);
-                    }else{
-                        ArrayList<String> clone = (ArrayList<String>)current.clone();
-                        result.add(clone);
-                    }
-                    current.remove(nextString);
-                }
-                if (i<s.length()-1) nextString=nextString+s.charAt(i+1);
+
+        for (int i = cur; i < dp[cur].length; i++) {
+            if (dp[cur][i]){
+                list.add(s.substring(cur, i + 1));
+                dfs(s, dp, i + 1, list);
+                list.remove(list.size() - 1);
             }
         }
     }
+
     //判断是否是回文串
     boolean judge(String s){
         int n = s.length();
@@ -155,6 +150,6 @@ public class PalindromePartitioning {
 
     public static void main(String[] args) {
         PalindromePartitioning p=new PalindromePartitioning();
-        p.partition3("aab");
+        p.partition3("google");
     }
 }
