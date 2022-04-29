@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 /**
  * ClassName: xkunchen <br/>
@@ -48,8 +49,15 @@ public class TestDate {
     }
 
     public static void main(String[] args) throws ParseException {
-        SimpleDateFormat SIMPLEDATEFORMAT =new SimpleDateFormat( "dd");
-        String format = SIMPLEDATEFORMAT.format(new Date());
-        System.out.println(format);
+        SimpleDateFormat SIMPLEDATEFORMAT =new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss");
+        for (int i = 0; i < 10; i++) {
+            String format = SIMPLEDATEFORMAT.format(new Date(randomDate(System.currentTimeMillis())));
+            System.out.println(format);
+        }
+    }
+
+    private static Long randomDate(Long nowDate){
+        Random rand=new Random();
+        return nowDate + (rand.nextInt(5)+10) * 60 * 1000;
     }
 }
