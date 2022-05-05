@@ -7,6 +7,11 @@ package 剑指offer;
  *
  * @author xkunchen<br />
  */
+
+/**
+ * ✔[剑指 Offer II 088]爬楼梯的最少成本
+ * https://leetcode-cn.com/problems/min-cost-climbing-stairs/
+ */
 public class II088MinCostClimbingStairs {
     public int minCostClimbingStairs(int[] cost) {
         int n = cost.length;
