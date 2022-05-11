@@ -12,7 +12,7 @@ package 剑指offer;
  * https://leetcode-cn.com/problems/house-robber/
  *    [剑指 Offer II 089]房屋偷盗
  */
-public class II08HouseRobber {
+public class II089HouseRobber {
     public int rob(int[] nums) {
         int[] arr=new int[nums.length+1];
         arr[1]=nums[0];
@@ -38,7 +38,7 @@ public class II08HouseRobber {
     }
 
     public static void main(String[] args) {
-        II08HouseRobber i=new II08HouseRobber();
+        II089HouseRobber i=new II089HouseRobber();
         i.rob2(new int[]{1,2,3,1});
     }
 }

@@ -15,7 +15,7 @@ import java.util.List;
  * https://leetcode-cn.com/problems/palindrome-partitioning/
  *    [剑指 Offer II 086]分割回文子字符串
  */
-public class II007PalindromePartitioning {
+public class II086PalindromePartitioning {
     public  List<List<String>> partition(String s) {
         int len = s.length();
         List<List<String>> result = new ArrayList<>();
@@ -51,7 +51,7 @@ public class II007PalindromePartitioning {
     }
 
     public static void main(String[] args) {
-        II007PalindromePartitioning i=new II007PalindromePartitioning();
+        II086PalindromePartitioning i=new II086PalindromePartitioning();
         i.partition("google");
     }
 }
