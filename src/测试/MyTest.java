@@ -1,9 +1,10 @@
 package 测试;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 /**
  * ClassName: xkunchen <br/>
@@ -60,10 +61,13 @@ public class MyTest {
         return (cal.getTimeInMillis() - System.currentTimeMillis()) / 1000 / 60/60;
     }
     public static void main(String[] args) {
-        Calendar cal = Calendar.getInstance();
+        LocalDate startDate =  LocalDate.parse("2022-05-18", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        LocalDate startDate2 =  LocalDate.now();
+        System.out.println(startDate.equals(startDate2));
+        /*Calendar cal = Calendar.getInstance();
         // 本周星期天的日期
-        /*System.out.println(getTheDateByWeekName("周六"));*/
-        System.out.println(cal.get(Calendar.YEAR));
+        *//*System.out.println(getTheDateByWeekName("周六"));*//*
+        System.out.println(cal.get(Calendar.YEAR));*/
     }
 
 }

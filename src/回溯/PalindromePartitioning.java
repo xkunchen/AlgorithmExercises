@@ -96,6 +96,28 @@ public class PalindromePartitioning {
         }
     }
 
+    //判断是否是回文串
+    boolean judge(String s){
+        int n = s.length();
+        int left = 0, right = n - 1;
+        while (left < right) {
+            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+                ++left;
+            }
+            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+                --right;
+            }
+            if (left < right) {
+                if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+                    return false;
+                }
+                ++left;
+                --right;
+            }
+        }
+        return true;
+    }
+
     List<List<String>> res = new ArrayList<>();
     public List<List<String>> partition(String s) {
         boolean[][] dp = new boolean[s.length()][s.length()];
@@ -126,27 +148,7 @@ public class PalindromePartitioning {
         }
     }
 
-    //判断是否是回文串
-    boolean judge(String s){
-        int n = s.length();
-        int left = 0, right = n - 1;
-        while (left < right) {
-            while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
-                ++left;
-            }
-            while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
-                --right;
-            }
-            if (left < right) {
-                if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
-                    return false;
-                }
-                ++left;
-                --right;
-            }
-        }
-        return true;
-    }
+
 
     public static void main(String[] args) {
         PalindromePartitioning p=new PalindromePartitioning();

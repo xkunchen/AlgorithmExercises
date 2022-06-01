@@ -71,6 +71,7 @@ public class Test {
        Map<Integer,String> aa=new HashMap<>();
        aa.put(new Integer(1),"adaf");
        aa.put(new Integer(1393955),"adaf");
+        Map<Integer,String> bb=new HashMap<>(23);
        System.out.println(aa.get(new Integer(1393955)));
     }
 }
