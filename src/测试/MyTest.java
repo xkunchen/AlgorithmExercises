@@ -1,5 +1,6 @@
 package 测试;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -61,9 +62,15 @@ public class MyTest {
         return (cal.getTimeInMillis() - System.currentTimeMillis()) / 1000 / 60/60;
     }
     public static void main(String[] args) {
-        LocalDate startDate =  LocalDate.parse("2022-05-18", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-        LocalDate startDate2 =  LocalDate.now();
-        System.out.println(startDate.equals(startDate2));
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
+        LocalDate startDate =  LocalDate.parse("2022-05-01", dateTimeFormatter);
+        LocalDate localDate = startDate.minusMonths(1);
+        String format = dateTimeFormatter2.format(localDate);
+        BigDecimal bigDecimal=new BigDecimal("0.22");
+        BigDecimal bigDecimal2=new BigDecimal("0.22000");
+
+        System.out.println(bigDecimal.compareTo(bigDecimal2));
         /*Calendar cal = Calendar.getInstance();
         // 本周星期天的日期
         *//*System.out.println(getTheDateByWeekName("周六"));*//*

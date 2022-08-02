@@ -29,6 +29,10 @@ import java.util.Queue;
 // grid[i][j] 的值为 '0' 或 '1'
 // Related Topics 深度优先搜索 广度优先搜索 并查集
 // 👍 884 👎 0
+
+/**
+ * 	[200]岛屿数量
+ */
 public class NumberOfIslands {
     //深度优先遍历
     void dfs(char[][] grid, int r, int c) {
@@ -108,21 +112,17 @@ public class NumberOfIslands {
     class UnionFind {
         int count;
         int[] parent;
-        int[] rank;
-
         public UnionFind(char[][] grid) {
             count = 0;
             int m = grid.length;
             int n = grid[0].length;
             parent = new int[m * n];
-            rank = new int[m * n];
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (grid[i][j] == '1') {
                         parent[i * n + j] = i * n + j;
                         ++count;
                     }
-                    rank[i * n + j] = 0;
                 }
             }
         }
@@ -136,14 +136,7 @@ public class NumberOfIslands {
             int rootx = find(x);
             int rooty = find(y);
             if (rootx != rooty) {
-                if (rank[rootx] > rank[rooty]) {
-                    parent[rooty] = rootx;
-                } else if (rank[rootx] < rank[rooty]) {
-                    parent[rootx] = rooty;
-                } else {
-                    parent[rooty] = rootx;
-                    rank[rootx] += 1;
-                }
+                parent[rooty] = rootx;
                 --count;
             }
         }

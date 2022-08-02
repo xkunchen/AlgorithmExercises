@@ -7,6 +7,11 @@ package 剑指offer;
  *
  * @author xkunchen<br />
  */
+
+/**
+ * https://leetcode-cn.com/problems/map-sum-pairs/
+ * ✔	[剑指 Offer II 066]单词之和
+ */
 public class II066mapSumPairs {
 }
 
