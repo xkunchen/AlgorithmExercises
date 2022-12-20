@@ -73,6 +73,6 @@ public class RegularExpressionMatching {
 
     public static void main(String[] args) {
         RegularExpressionMatching s=new RegularExpressionMatching();
-        s.isMatch("aab","c*a*ab");
+        s.isMatch("aa","a*");
     }
 }

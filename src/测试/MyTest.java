@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * ClassName: xkunchen <br/>
@@ -62,7 +63,7 @@ public class MyTest {
         return (cal.getTimeInMillis() - System.currentTimeMillis()) / 1000 / 60/60;
     }
     public static void main(String[] args) {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        /*DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter dateTimeFormatter2 = DateTimeFormatter.ofPattern("yyyy-MM");
         LocalDate startDate =  LocalDate.parse("2022-05-01", dateTimeFormatter);
         LocalDate localDate = startDate.minusMonths(1);
@@ -70,11 +71,14 @@ public class MyTest {
         BigDecimal bigDecimal=new BigDecimal("0.22");
         BigDecimal bigDecimal2=new BigDecimal("0.22000");
 
-        System.out.println(bigDecimal.compareTo(bigDecimal2));
+        System.out.println(bigDecimal.compareTo(bigDecimal2));*/
         /*Calendar cal = Calendar.getInstance();
         // 本周星期天的日期
         *//*System.out.println(getTheDateByWeekName("周六"));*//*
         System.out.println(cal.get(Calendar.YEAR));*/
+        List<Integer> list=new ArrayList<>();
+        List<Integer> collect = list.stream().filter(t -> t != 1).collect(Collectors.toList());
+        System.out.println(collect);
     }
 
 }

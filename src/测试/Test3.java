@@ -48,9 +48,9 @@ public enum Test3 {
     }
 
     public static void main(String[] args) {
-        for (Test3 day : Test3.values()) {
-            System.out.println("name:" + day.name() +
-                    ",desc:" + day.getDesc());
-        }
+        String aa="dfasdfsadf";
+        String replace = aa.replace("f", "hhh");
+        System.out.println(aa);
+        System.out.println(replace);
     }
 }

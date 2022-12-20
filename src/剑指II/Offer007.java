@@ -91,6 +91,6 @@ public class Offer007 {
 
     public static void main(String[] args) {
         Offer007 o=new Offer007();
-        o.buildTree2(new int[]{3,9,11,14,13,20,15,7},new int[]{14,11,13,9,3,15,20,7});
+        o.buildTree(new int[]{3,9,11,14,13,20,15,7},new int[]{14,11,13,9,3,15,20,7});
     }
 }

@@ -48,6 +48,8 @@ public class II003CountingBits {
     public int[] countBits3(int n) {
         int[] bits = new int[n + 1];
         for (int i = 1; i <= n; i++) {
+            int aa=i >> 1;
+            //左移一位加上最后一位是否是1
             bits[i] = bits[i >> 1] + (i & 1);
         }
         return bits;
@@ -65,7 +67,7 @@ public class II003CountingBits {
 
     public static void main(String[] args) {
         II003CountingBits bit=new II003CountingBits();
-        bit.countBits4(7);
+        bit.countBits2(7);
     }
 
 }
